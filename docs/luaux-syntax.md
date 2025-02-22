@@ -72,7 +72,7 @@ Element properties can be defined as follows:
 ```luau
 <element foo="bar" /> --[[
     {
-        tag = "foobar",
+        tag = "element",
         foo = "bar",
     }
 ]]
@@ -85,7 +85,7 @@ You can add a child to an element in between its opening and closing tag.
 -- Element with one child.
 <element>
     <child />
-<element>
+</element>
 ```
 
 The resulting table of the element will have a `children` property with its value set to the child.
@@ -107,7 +107,7 @@ If the element has more than one child then the resulting `children` property wi
     <child>
         <foo />
     </child>
-<element> --[[
+</element> --[[
     {
         tag = "element",
         children = {
@@ -139,12 +139,15 @@ Similar to strings, you can interpolate luau expressions inside luaux by wrappin
     {"hello there"}
 </element> --[[
     {
-        tag = "helloworld",
+        tag = "element",
         foo = 55,
         bar = vector.create(200, 80),
         children = {
             {
-            }
+                tag = "child",
+                baz = true
+            },
+            "hello there"
         }
     }
 ]]
